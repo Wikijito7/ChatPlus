@@ -29,6 +29,7 @@ public class Main extends JavaPlugin {
 		  if (!file.exists()) {
 	            file.mkdir();
 	            config.set("commands.activated", true);
+	            config.set("format", "<%DISPLAYNAME%>");
 	            try {
 	                config.save(file);
 	                config.load(file);
