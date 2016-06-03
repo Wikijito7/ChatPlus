@@ -42,6 +42,11 @@ public class Eventos implements Listener {
 	public void onChat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
 
+		if (event.getMessage().equalsIgnoreCase("%")) {
+			event.setFormat(event.getFormat());
+			return;
+		}
+
 		String form1 = p.getName() + ": " + event.getMessage();
 		String form2 = ChatColor.translateAlternateColorCodes('&', Main.config.getString("Users." + p.getName() + ".cnick")) + ChatColor.RESET + ": " + event.getMessage();
 
