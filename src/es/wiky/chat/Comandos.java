@@ -39,7 +39,8 @@ public class Comandos implements CommandExecutor {
 					if(Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 						if(args[0].equalsIgnoreCase("change")){
 							Main.config.set("Users." + p.getName() + ".cnick", args[1]);
-							p.sendMessage(Mensajes.successful_change_nick + Mensajes.playerNewNick(p.getName()));
+							p.sendMessage(Mensajes.successful_change_nick + " " + Mensajes.playerNewNick(p.getName()));
+							p.setDisplayName(Main.config.getString("Users." + p.getName() + ".cnick"));
 							 try {
 				                Main.config.save(Main.file);
 				                Main.config.load(Main.file);
@@ -55,10 +56,8 @@ public class Comandos implements CommandExecutor {
 					}
 					}
 			
-			
 			if(args.length == 3){
 				if(args[0].equalsIgnoreCase("set")){
-					@SuppressWarnings("deprecation")
 					Player pl = Bukkit.getPlayerExact(args[1]);
 					if(pl != null){
 						Main.config.set("Users." + pl.getName() + ".cnick", args[2]);
@@ -68,6 +67,7 @@ public class Comandos implements CommandExecutor {
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}
+						p.setDisplayName(Main.config.getString("Users." + pl.getName() + ".cnick"));
 						p.sendMessage(Mensajes.playerSet(p.getName()));
 						pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
 					 }else{

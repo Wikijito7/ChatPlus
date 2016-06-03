@@ -39,14 +39,14 @@ public class Eventos implements Listener{
         }	
 	}
 	
-	
-	public void onChat(AsyncPlayerChatEvent event){
-		Player p = event.getPlayer();
-		if(!Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")){
-		event.setFormat(ChatColor.translateAlternateColorCodes('&', Main.config.getString("Users." + p.getName() + ".cnick")));
-					}else{
-						event.setFormat(p.getName());
-					}
-		}
+	//@EventHandler(priority = EventPriority.LOWEST)
+	//public void onChat(AsyncPlayerChatEvent event){
+		//Player p = event.getPlayer();
+		//if(Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")){
+					//event.setFormat(p.getName() + ":" + event.getMessage());
+					//}else{
+					//event.setFormat(ChatColor.translateAlternateColorCodes('&', Main.config.getString("Users." + p.getName() + ".cnick")) + ChatColor.RESET + ": " + event.getMessage());
+						//}
+					//}
 	}
 

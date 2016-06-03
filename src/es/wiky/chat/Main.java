@@ -18,7 +18,7 @@ import es.wiky.chat.Eventos;
 
 public class Main extends JavaPlugin {
 	public static File file = new File("plugins/Chat+", "config.yml");
-	public static File lang = new File("plugins/Chat+/lang", "lang-es.yml");
+	public static File lang = new File("plugins/Chat+/lang", "lang.yml");
     public static YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
     public static YamlConfiguration clang = YamlConfiguration.loadConfiguration(lang);
 	private PluginManager Plugin = this.getServer().getPluginManager();
