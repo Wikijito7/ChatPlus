@@ -21,6 +21,6 @@ public class Mensajes {
 		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set").replaceAll("%PLAYER%", name));
 		}
 	public static String playerDisplayName(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.new_nick").replaceAll("%DISPLAYNAME%",name));
+		return ChatColor.translateAlternateColorCodes('&',Main.config.getString("format").replaceAll("%DISPLAYNAME%",name));
 		}
 }
