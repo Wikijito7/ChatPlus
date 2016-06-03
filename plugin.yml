@@ -1,0 +1,9 @@
+main: es.wiky.chat.Main
+author: Wiky
+name: ChatPlus
+version: 0.1
+
+
+commands:
+  nick:
+   description: It is one of the main commands in the plugin, it let u do a lot of things.
