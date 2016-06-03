@@ -10,6 +10,7 @@ public class Mensajes {
 	public static String successful_change_nick = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.successful_change_nick"));
 	public static String nick_changed = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_changed"));
 	public static String player_dont_exist = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_dont_exist"));
+	public static String nick_set_usage = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String playerSetReciever(String name){
 		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set_reciever").replaceAll("%NICK%", Main.config.getString("Users." + name + ".cnick")));
 		}

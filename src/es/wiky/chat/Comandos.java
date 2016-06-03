@@ -30,7 +30,7 @@ public class Comandos implements CommandExecutor {
 					p.sendMessage("WIP");
 				}
 				if(args[0].equalsIgnoreCase("set")){
-					p.sendMessage("asdasd");
+					p.sendMessage(Mensajes.nick_set_usage);
 				}	
 				
 			}
@@ -52,7 +52,7 @@ public class Comandos implements CommandExecutor {
 					p.sendMessage(Mensajes.nick_changed);
 					}
 				if(args[0].equalsIgnoreCase("set")){
-						p.sendMessage("WIP");
+						p.sendMessage(Mensajes.nick_set_usage);
 					}
 					}
 			

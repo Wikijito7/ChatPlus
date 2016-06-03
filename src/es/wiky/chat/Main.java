@@ -82,9 +82,10 @@ public class Main extends JavaPlugin {
 			clang.set("lang.nick_change_usage", "&aTo use this command you need to type &6/nick change <nick>");
 			clang.set("lang.successful_change_nick", "&aYou have changed your nick successfully.");
 			clang.set("lang.new_nick",  "&aYour new nick is: &6%NICK%");
-			clang.set("lang.nick_changed", "&4You have changed your nick, you can't chat it again.");
+			clang.set("lang.nick_changed", "&4You have changed your nick, you can't change it again.");
 			clang.set("lang.player_dont_exist", "&4Player not found. Does it exists?");
 			clang.set("lang.player_set", "&6%PLAYER%&a's nick has been changed sucessfully.");
 			clang.set("lang.player_set_reciever", "&aYour nick has been changed into &6%NICK%");
+			clang.set("lang.nick_set_usage", "&8To use this command you need to type &a/nick set <name> <nick>");
 		}
 }
