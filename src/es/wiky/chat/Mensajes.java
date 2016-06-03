@@ -23,10 +23,4 @@ public class Mensajes {
 	public static String playerDisplayName(String name){
 		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.new_nick").replaceAll("%DISPLAYNAME%",name));
 		}
-	public static String playerDisplayNameCustom(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.new_nick").replaceAll("%NICK%", Main.config.getString("Users." + name + ".cnick")));
-		}
-
-
-
 }

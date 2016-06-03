@@ -60,6 +60,9 @@ public class Comandos implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("set")){
 					Player pl = Bukkit.getPlayerExact(args[1]);
 					if(pl != null){
+						if(args[2].equalsIgnoreCase("none")){
+							pl.setDisplayName(pl.getName());
+						}else{
 						Main.config.set("Users." + pl.getName() + ".cnick", args[2]);
 						try {
 			                Main.config.save(Main.file);
@@ -70,9 +73,10 @@ public class Comandos implements CommandExecutor {
 						p.setDisplayName(Main.config.getString("Users." + pl.getName() + ".cnick"));
 						p.sendMessage(Mensajes.playerSet(p.getName()));
 						pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
-					 }else{
-							p.sendMessage(Mensajes.player_dont_exist + " " + args[1]);
-					 		}
+							}
+					}else{
+						p.sendMessage(Mensajes.player_dont_exist + " " + args[1]);
+					 	 }
 					}
 				}
 			}	

@@ -47,18 +47,9 @@ public class Eventos implements Listener {
 			return;
 		}
 		
-		if (event.getMessage().equalsIgnoreCase("N")) {
-			event.setFormat(event.getFormat());
-			return;
-		}
+		String format = Mensajes.playerDisplayName(p.getDisplayName()) + event.getFormat();
+		event.setFormat(format);
 		
-		String form1 = Mensajes.playerDisplayName(p.getName()) + org.bukkit.ChatColor.RESET + event.getMessage();
-		String form2 = ChatColor.translateAlternateColorCodes('&', Main.config.getString("Users." + p.getName() + ".cnick")) + ChatColor.RESET + ": " + event.getMessage();
 
-		if (Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
-			event.setFormat(form1);
-		} else {
-			event.setFormat(form2);
-		}
 	}
 }
