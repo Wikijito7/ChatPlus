@@ -18,7 +18,7 @@ public class Comandos implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("nick")){
+		if(cmd.getName().equalsIgnoreCase("cnick")){
 			if(args.length == 0){
 				p.sendMessage(Mensajes.nick);
 			}
@@ -36,25 +36,40 @@ public class Comandos implements CommandExecutor {
 			}
 			
 			if(args.length == 2){
-					if(Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 						if(args[0].equalsIgnoreCase("change")){
+							if(Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 							Main.config.set("Users." + p.getName() + ".cnick", args[1]);
 							p.sendMessage(Mensajes.successful_change_nick + " " + Mensajes.playerNewNick(p.getName()));
-							p.setDisplayName(Main.config.getString("Users." + p.getName() + ".cnick"));
+							//p.setDisplayName(Main.config.getString("Users." + p.getName() + ".cnick"));
 							 try {
 				                Main.config.save(Main.file);
 				                Main.config.load(Main.file);
 				            } catch (IOException | InvalidConfigurationException e) {
 				                e.printStackTrace();
-					            	}
-							}
-				}else{
-					p.sendMessage(Mensajes.nick_changed);
-					}
-				if(args[0].equalsIgnoreCase("set")){
+					            	}	
+						}else{
+							p.sendMessage(Mensajes.nick_changed);
+							 }
+						}
+						
+					if(args[0].equalsIgnoreCase("set")){
 						p.sendMessage(Mensajes.nick_set_usage);
+							}
+					
+					if(args[0].equalsIgnoreCase("remove")){
+						Player pl = Bukkit.getPlayerExact(args[1]);
+						Main.config.set("Users." + pl.getName() + ".cnick", "none");
+						try {
+			                Main.config.save(Main.file);
+			                Main.config.load(Main.file);
+			            } catch (IOException | InvalidConfigurationException e) {
+			                e.printStackTrace();
+			            	}
+						pl.sendMessage("Done");
+						p.sendMessage("Eliminated");
+								}
 					}
-					}
+			
 			
 			if(args.length == 3){
 				if(args[0].equalsIgnoreCase("set")){
@@ -62,6 +77,8 @@ public class Comandos implements CommandExecutor {
 					if(pl != null){
 						if(args[2].equalsIgnoreCase("none")){
 							pl.setDisplayName(pl.getName());
+							p.sendMessage(Mensajes.playerSet(p.getName()));
+							pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
 						}else{
 						Main.config.set("Users." + pl.getName() + ".cnick", args[2]);
 						try {
@@ -70,18 +87,17 @@ public class Comandos implements CommandExecutor {
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}
-						p.setDisplayName(Main.config.getString("Users." + pl.getName() + ".cnick"));
 						p.sendMessage(Mensajes.playerSet(p.getName()));
 						pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
 							}
 					}else{
 						p.sendMessage(Mensajes.player_dont_exist + " " + args[1]);
-					 	 }
+					 	}
 					}
 				}
-			}	
+			}
 					
 			return false;
 
-}
+		}
 }

@@ -68,7 +68,7 @@ public class Main extends JavaPlugin {
 	}
 	 
 		private void registrarCommandos() {
-			getCommand("nick").setExecutor(new Comandos(this));
+			getCommand("cnick").setExecutor(new Comandos(this));
 			
 		}
 		

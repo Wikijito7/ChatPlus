@@ -5,5 +5,5 @@ version: 0.1
 
 
 commands:
-  nick:
+  cnick:
    description: It is one of the main commands in the plugin, it let u do a lot of things.
