@@ -46,10 +46,25 @@ public class Eventos implements Listener {
 			event.setFormat(event.getFormat());
 			return;
 		}
+
 		
 		String format = Mensajes.playerDisplayName(p.getDisplayName()) + event.getFormat();
 		event.setFormat(format);
 		
+
+
+		if (event.getMessage().equalsIgnoreCase("N")) {
+			event.setFormat(event.getFormat());
+			return;
+		}
+
+		String form = ChatColor.translateAlternateColorCodes('&', Main.config.getString("Users." + p.getName() + ".cnick")) + ChatColor.RESET + ": " + event.getMessage();
+
+		if (Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
+			event.setFormat(event.getFormat());
+		} else {
+			event.setFormat(form);
+		}
 
 	}
 }
