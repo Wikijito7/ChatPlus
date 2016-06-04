@@ -9,8 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
-import net.md_5.bungee.api.ChatColor;
-
 public class Comandos implements CommandExecutor {
 	private Main plugin;
 	public Comandos(Main main) {
@@ -29,16 +27,18 @@ public class Comandos implements CommandExecutor {
 					p.sendMessage(Mensajes.nick_change_usage);
 						}
 				if(args[0].equalsIgnoreCase("help")){
-					p.sendMessage(ChatColor.GRAY + "<-------------------------------->");
-					p.sendMessage(ChatColor.GREEN + "Welcome to the help section.");
-					p.sendMessage(ChatColor.GOLD + "/nick change <nick> " + Mensajes.help_change);
-					p.sendMessage(ChatColor.GOLD + "/nick set <name> <nick> " +Mensajes.help_set);
-					p.sendMessage(ChatColor.GOLD + "/nick remove <name> " +Mensajes.help_remove);
-					p.sendMessage(ChatColor.GOLD + "/nick motd <message> " + ChatColor.DARK_RED + "Actually in WIP " +Mensajes.help_motd);
+					p.sendMessage(org.bukkit.ChatColor.GRAY + "<------------------------------------------->");
+					p.sendMessage(" ");
+					p.sendMessage(org.bukkit.ChatColor.GREEN + "Welcome to the help section.");
+					p.sendMessage(org.bukkit.ChatColor.GOLD + "/cnick change <nick> " + Mensajes.help_change);
+					p.sendMessage(org.bukkit.ChatColor.GOLD + "/cnick set <name> <nick> " +Mensajes.help_set);
+					p.sendMessage(org.bukkit.ChatColor.GOLD + "/cnick remove <name> " +Mensajes.help_remove);
+					p.sendMessage(org.bukkit.ChatColor.GOLD + "/cnick motd <message> " + org.bukkit.ChatColor.DARK_RED + "Actually in WIP " +Mensajes.help_motd);
 					if(p.hasPermission("chatplus.admin")){
-						p.sendMessage(ChatColor.GOLD + "/nick change <nick> " +Mensajes.help_admin);
+						p.sendMessage(org.bukkit.ChatColor.RED + "/cnick admin " + org.bukkit.ChatColor.DARK_RED + "Actually in WIP " + Mensajes.help_admin);
 					}
-					p.sendMessage(ChatColor.GRAY + "<-------------------------------->");
+					p.sendMessage(" ");
+					p.sendMessage(org.bukkit.ChatColor.GRAY + "<------------------------------------------->");
 						}
 				if(args[0].equalsIgnoreCase("set")){
 					p.sendMessage(Mensajes.nick_set_usage);
@@ -54,8 +54,14 @@ public class Comandos implements CommandExecutor {
 						if(args[0].equalsIgnoreCase("change")){
 							if(Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 							Main.user.set("Users." + p.getName() + ".cnick", args[1]);
+							
 							p.sendMessage(Mensajes.successful_change_nick + " " + Mensajes.playerNewNick(p.getName()));
-							this.plugin.saveDefaultConfig();	
+							try {
+				                Main.user.save(Main.file);
+				                Main.user.load(Main.file);
+				            } catch (IOException | InvalidConfigurationException e) {
+				                e.printStackTrace();
+				            	}
 							}else{
 								p.sendMessage(Mensajes.nick_changed);
 							 	}
@@ -75,8 +81,8 @@ public class Comandos implements CommandExecutor {
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}
-						pl.sendMessage("Done");
-						p.sendMessage("Eliminated");
+						pl.sendMessage(Mensajes.playerRemovedNick(pl.getName()));
+						p.sendMessage(Mensajes.nick_removed);
 								}else{
 									p.sendMessage(Mensajes.player_dont_exist);
 								}

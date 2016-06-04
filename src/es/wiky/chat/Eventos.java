@@ -39,21 +39,21 @@ public class Eventos implements Listener {
             }
 		
 			p.sendMessage(Mensajes.nick_not_changed);
-		
+			
 		}
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onChat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
 
-				//String form1 = Mensajes.playerDisplayName(p.getName()) + org.bukkit.ChatColor.RESET + " " + event.getMessage();
-		 		//String form2 = ChatColor.translateAlternateColorCodes('&', Mensajes.playerDisplayName(Main.user.getString("Users." + p.getName() + ".cnick")) + org.bukkit.ChatColor.RESET + " " + event.getMessage());
+				//String form1 = Mensajes.playerDisplayName(p.getName()) + org.bukkit.org.bukkit.ChatColor.RESET + " " + event.getMessage();
+		 		//String form2 = org.bukkit.ChatColor.translateAlternateColorCodes('&', Mensajes.playerDisplayName(Main.user.getString("Users." + p.getName() + ".cnick")) + org.bukkit.org.bukkit.ChatColor.RESET + " " + event.getMessage());
 				  
 		 	if (Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 		 			//event.setFormat(form1);
-		 			 event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " " + event.getMessage());
+		 			 event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " "  + ChatColor.translateAlternateColorCodes('&', event.getMessage()));
 		 		} else {
-		 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", ChatColor.translateAlternateColorCodes('&', Main.user.getString("Users." + p.getName() + ".cnick")) + " " + event.getMessage()));
+		 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.user.getString("Users." + p.getName() + ".cnick")) + " " + ChatColor.translateAlternateColorCodes('&', event.getMessage())));
 		 		}
 		  	
 

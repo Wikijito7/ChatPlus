@@ -35,7 +35,25 @@ public class Main extends JavaPlugin {
 
 		  if (!lang.exists()) {
 	            lang.mkdir();
-	            Messages();
+	            clang.set("lang.noperm", "&4Sorry, but you don't have permission to do that.");
+	            clang.set("lang.nick_removed", "&aYou have removed the nick of %PLAYER%.");
+	            clang.set("lang.nick_remove", "&aYour nick has been removed.");
+	            clang.set("lang.nick_not_changed", "&7You haven't change your nick yet, to do it type &b/cnick change <nick>.");
+				clang.set("lang.nick","&aTo use this command type &6/cnick help.");
+				clang.set("lang.nick_change_usage", "&aTo use this command you need to type &6/cnick change <nick>.");
+				clang.set("lang.successful_change_nick", "&aYou have changed your nick successfully.");
+				clang.set("lang.new_nick",  "&aYour new nick is: &6%NICK%.");
+				clang.set("lang.nick_changed", "&4You have changed your nick, you can't change it again.");
+				clang.set("lang.player_dont_exist", "&4Player not found. Does it exists?");
+				clang.set("lang.player_set", "&6%PLAYER%&a's nick has been changed sucessfully.");
+				clang.set("lang.player_set_reciever", "&aYour nick has been changed into &6%NICK%.");
+				clang.set("lang.nick_set_usage", "&aTo use this command you need to type &6/cnick set <name> <nick>.");
+				clang.set("lang.help_admin", "&aUsing this command you see the administrator's commands.");
+				clang.set("lang.help_change", "&aUsing this command you change your custom nick.");
+				clang.set("lang.help_motd", "&aUsing this command you change the message that users see when they enter.");
+				clang.set("lang.help_remove", "&aUsing this command you remove the nick of a player.");
+				clang.set("lang.help_set", "&aUsing this command you set to a player a custom nick.");
+				clang.set("lang.remove_usage", "&aTo use this command, you need to type &6/nick remove <name>");
 	            try {
 	                clang.save(lang);
 	                clang.load(lang);
@@ -78,22 +96,5 @@ public class Main extends JavaPlugin {
 			Plugin.registerEvents(new Eventos(this), this);
 		}
 		
-		private void Messages(){
-			clang.set("lang.noperm", "&4Sorry, but you don't have permission to do that.");
-			clang.set("lang.nick_not_changed", "&7You haven't change your nick yet, to do it type &b/nick change <nick>.");
-			clang.set("lang.nick","&aTo use this command type &6/cnick help.");
-			clang.set("lang.nick_change_usage", "&aTo use this command you need to type &6/cnick change <nick>.");
-			clang.set("lang.successful_change_nick", "&aYou have changed your nick successfully.");
-			clang.set("lang.new_nick",  "&aYour new nick is: &6%NICK%.");
-			clang.set("lang.nick_changed", "&4You have changed your nick, you can't change it again.");
-			clang.set("lang.player_dont_exist", "&4Player not found. Does it exists?");
-			clang.set("lang.player_set", "&6%PLAYER%&a's nick has been changed sucessfully.");
-			clang.set("lang.player_set_reciever", "&aYour nick has been changed into &6%NICK%.");
-			clang.set("lang.nick_set_usage", "&aTo use this command you need to type &6/cnick set <name> <nick>.");
-			clang.set("lang.help_admin", "&aUsing this command you see the administrator's commands.");
-			clang.set("lang.help_change", "&aUsing this command you change your custom nick.");
-			clang.set("lang.help_motd", "&aUsing this command you change the message that users see when they enter.");
-			clang.set("lang.help_remove", "&aUsing this command you remove the nick of a player.");
-			clang.set("lang.help_set", "&aUsing this command you set to a player a custom nick.");
-		}
+		
 }
