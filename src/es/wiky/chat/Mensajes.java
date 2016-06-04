@@ -21,6 +21,16 @@ public class Mensajes {
 		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set").replaceAll("%PLAYER%", name));
 		}
 	public static String playerDisplayName(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.config.getString("format").replaceAll("%DISPLAYNAME%",name));
+		return ChatColor.translateAlternateColorCodes('&',Main.config.getString("format").replaceAll("%DISPLAYNAME%", name));
 		}
+	public static String help_change = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
+	public static String help_set = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
+	public static String help_remove = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
+	public static String help_admin = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
+	public static String help_motd = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
+
+
+
+
+
 }

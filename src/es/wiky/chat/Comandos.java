@@ -23,17 +23,22 @@ public class Comandos implements CommandExecutor {
 				p.sendMessage(Mensajes.nick);
 			}
 			if(args.length == 1){
+			  if(args[0].equalsIgnoreCase("change") || args[0].equalsIgnoreCase("help")|| args[0].equalsIgnoreCase("set")){		
 				if(args[0].equalsIgnoreCase("change")){
 					p.sendMessage(Mensajes.nick_change_usage);
-					}
+						}
 				if(args[0].equalsIgnoreCase("help")){
 					p.sendMessage("WIP");
-				}
+						}
 				if(args[0].equalsIgnoreCase("set")){
 					p.sendMessage(Mensajes.nick_set_usage);
-				}	
+						}	
 				
-			}
+			  		}else{
+			  			p.sendMessage(Mensajes.nick);
+			  		}
+				}
+			
 			
 			if(args.length == 2){
 						if(args[0].equalsIgnoreCase("change")){
@@ -44,12 +49,12 @@ public class Comandos implements CommandExecutor {
 							 try {
 				                Main.config.save(Main.file);
 				                Main.config.load(Main.file);
-				            } catch (IOException | InvalidConfigurationException e) {
-				                e.printStackTrace();
-					            	}	
-						}else{
-							p.sendMessage(Mensajes.nick_changed);
-							 }
+							 } catch (IOException | InvalidConfigurationException e) {
+								 e.printStackTrace();
+					            		}	
+							}else{
+								p.sendMessage(Mensajes.nick_changed);
+							 	}
 						}
 						
 					if(args[0].equalsIgnoreCase("set")){

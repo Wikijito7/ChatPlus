@@ -28,8 +28,7 @@ public class Main extends JavaPlugin {
 		registrarEventos();
 		  if (!file.exists()) {
 	            file.mkdir();
-	            config.set("commands.activated", true);
-	            config.set("format", "<%DISPLAYNAME%>");
+	            config.setDefaults(getConfig());
 	            try {
 	                config.save(file);
 	                config.load(file);
@@ -75,17 +74,16 @@ public class Main extends JavaPlugin {
 		private void registrarEventos() {
 			Plugin.registerEvents(new Eventos(this), this);
 		}
-
 		private void Messages(){
 			clang.set("lang.noperm", "&4Sorry, but you don't have permission to do that.");
-			clang.set("lang.nick","&aTo use this command type &6/nick help");
-			clang.set("lang.nick_change_usage", "&aTo use this command you need to type &6/nick change <nick>");
+			clang.set("lang.nick","&aTo use this command type &6/cnick help");
+			clang.set("lang.nick_change_usage", "&aTo use this command you need to type &6/cnick change <nick>");
 			clang.set("lang.successful_change_nick", "&aYou have changed your nick successfully.");
 			clang.set("lang.new_nick",  "&aYour new nick is: &6%NICK%");
 			clang.set("lang.nick_changed", "&4You have changed your nick, you can't change it again.");
 			clang.set("lang.player_dont_exist", "&4Player not found. Does it exists?");
 			clang.set("lang.player_set", "&6%PLAYER%&a's nick has been changed sucessfully.");
 			clang.set("lang.player_set_reciever", "&aYour nick has been changed into &6%NICK%");
-			clang.set("lang.nick_set_usage", "&8To use this command you need to type &a/nick set <name> <nick>");
+			clang.set("lang.nick_set_usage", "&8To use this command you need to type &a/cnick set <name> <nick>");
 		}
 }
