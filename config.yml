@@ -1,6 +1,7 @@
 #Welcome to the configuration of Chat+, this is the work in progress version, so it can be with some bugs.
 
 #This is the format that the plugin uses to set the chat, right now it just admits '%DISPLAYNAME', but you can change the others things like the '<>'
+
 format: <%DISPLAYNAME%>
 
 #Here are the users, in this case when a user enters it creates a profile in this group. It brings the custom nick (cnick) and the real one.

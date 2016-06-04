@@ -12,16 +12,16 @@ public class Mensajes {
 	public static String player_dont_exist = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_dont_exist"));
 	public static String nick_set_usage = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String playerSetReciever(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set_reciever").replaceAll("%NICK%", Main.config.getString("Users." + name + ".cnick")));
+		return "asdas"; //ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set_reciever").replaceAll("%NICK%", Main.config.getString("Users." + name + ".cnick")));
 		}
 	public static String playerNewNick(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.new_nick").replaceAll("%NICK%", Main.config.getString("Users." + name + ".cnick")));
+		return "asdasd";//ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.new_nick").replaceAll("%NICK%", Main.config.getString("Users." + name + ".cnick")));
 		}
 	public static String playerSet(String name){
 		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set").replaceAll("%PLAYER%", name));
 		}
 	public static String playerDisplayName(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.config.getString("format").replaceAll("%DISPLAYNAME%", name));
+		return "assda"; //ChatColor.translateAlternateColorCodes('&',Main.config.getString("format").replaceAll("%DISPLAYNAME%", name));
 		}
 	public static String help_change = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String help_set = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));

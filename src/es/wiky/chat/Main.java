@@ -28,7 +28,8 @@ public class Main extends JavaPlugin {
 		registrarEventos();
 		  if (!file.exists()) {
 	            file.mkdir();
-	            config.setDefaults(getConfig());
+	            //config.setDefaults(getConfig());
+	            getConfig().options().copyDefaults(true);
 	            try {
 	                config.save(file);
 	                config.load(file);
@@ -74,6 +75,7 @@ public class Main extends JavaPlugin {
 		private void registrarEventos() {
 			Plugin.registerEvents(new Eventos(this), this);
 		}
+		
 		private void Messages(){
 			clang.set("lang.noperm", "&4Sorry, but you don't have permission to do that.");
 			clang.set("lang.nick","&aTo use this command type &6/cnick help");
