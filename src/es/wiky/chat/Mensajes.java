@@ -2,8 +2,15 @@ package es.wiky.chat;
 
 import org.bukkit.ChatColor;
 
+
+
+
+
 public class Mensajes {
-	private static Main plugin;
+	private Main plugin;
+	public Mensajes (Main Main){
+	this.plugin = Main;
+		}
 	public static String noperm = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.noperm"));
 	public static String nick = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick"));
 	public static String nick_change_usage = ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_change_usage"));
@@ -20,17 +27,20 @@ public class Mensajes {
 	public static String playerSet(String name){
 		return ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.player_set").replaceAll("%PLAYER%", name));
 		}
-	public static String playerDisplayName(String name){
-		return ChatColor.translateAlternateColorCodes('&',Main.config.getString("format").replaceAll("%DISPLANAME%", name));
+	public String playerDisplayName(String name){
+		return ChatColor.translateAlternateColorCodes('&',this.plugin.getConfig().getString("format").replaceAll("%DISPLANAME%", name));
 		}
 	public static String help_change = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String help_set = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String help_remove = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String help_admin = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
 	public static String help_motd = ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_set_usage"));
+	
 
-
-
-
-
+	
+	
+	
+	
+	
+	
 }

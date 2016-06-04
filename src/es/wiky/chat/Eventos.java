@@ -17,7 +17,7 @@ public class Eventos implements Listener {
 	private Main plugin;
 
 	public Eventos(Main instance){
-
+		this.plugin = instance;
 	}
 
 	@EventHandler(priority = EventPriority.LOWEST)
@@ -44,13 +44,14 @@ public class Eventos implements Listener {
 	public void onChat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
 
-				String form1 = Mensajes.playerDisplayName(p.getName()) + org.bukkit.ChatColor.RESET + " " + event.getMessage();
-		 		String form2 = ChatColor.translateAlternateColorCodes('&', Mensajes.playerDisplayName(Main.user.getString("Users." + p.getName() + ".cnick")) + org.bukkit.ChatColor.RESET + " " + event.getMessage());
+				//String form1 = Mensajes.playerDisplayName(p.getName()) + org.bukkit.ChatColor.RESET + " " + event.getMessage();
+		 		//String form2 = ChatColor.translateAlternateColorCodes('&', Mensajes.playerDisplayName(Main.user.getString("Users." + p.getName() + ".cnick")) + org.bukkit.ChatColor.RESET + " " + event.getMessage());
 				  
 		 	if (Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
-		 			event.setFormat(form1);
+		 			//event.setFormat(form1);
+		 			 event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " " + event.getMessage());
 		 		} else {
-		 			event.setFormat(form2);
+		 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", ChatColor.translateAlternateColorCodes('&', Main.user.getString("Users." + p.getName() + ".cnick")) + " " + event.getMessage()));
 		 		}
 		  	
 

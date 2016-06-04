@@ -41,8 +41,8 @@ public class Comandos implements CommandExecutor {
 			
 			if(args.length == 2){
 						if(args[0].equalsIgnoreCase("change")){
-							if(Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
-							Main.config.set("Users." + p.getName() + ".cnick", args[1]);
+							if(Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
+							Main.user.set("Users." + p.getName() + ".cnick", args[1]);
 							p.sendMessage(Mensajes.successful_change_nick + " " + Mensajes.playerNewNick(p.getName()));
 							this.plugin.saveDefaultConfig();	
 							}else{
@@ -56,10 +56,10 @@ public class Comandos implements CommandExecutor {
 					
 					if(args[0].equalsIgnoreCase("remove")){
 						Player pl = Bukkit.getPlayerExact(args[1]);
-						Main.config.set("Users." + pl.getName() + ".cnick", "none");
+						Main.user.set("Users." + pl.getName() + ".cnick", "none");
 						try {
-			                Main.config.save(Main.file);
-			                Main.config.load(Main.file);
+			                Main.user.save(Main.file);
+			                Main.user.load(Main.file);
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}
@@ -78,10 +78,10 @@ public class Comandos implements CommandExecutor {
 							p.sendMessage(Mensajes.playerSet(p.getName()));
 							pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
 						}else{
-						Main.config.set("Users." + pl.getName() + ".cnick", args[2]);
+						Main.user.set("Users." + pl.getName() + ".cnick", args[2]);
 						try {
-			                Main.config.save(Main.file);
-			                Main.config.load(Main.file);
+			                Main.user.save(Main.file);
+			                Main.user.load(Main.file);
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}

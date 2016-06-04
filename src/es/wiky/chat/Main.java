@@ -21,7 +21,7 @@ public class Main extends JavaPlugin {
 	public static File file = new File("plugins/ChatPlus", "config.yml");
 	public static File lang = new File("plugins/ChatPlus/lang", "lang.yml");
 	public static File users = new File("plugins/ChatPlus/users" , "users.yml");
-    public static YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
+    //public static YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
     public static YamlConfiguration clang = YamlConfiguration.loadConfiguration(lang);
     public static YamlConfiguration user = YamlConfiguration.loadConfiguration(users);
 	private PluginManager Plugin = this.getServer().getPluginManager();
@@ -61,7 +61,7 @@ public class Main extends JavaPlugin {
 	public void onDisable(){
 		System.out.println("Chat+ has been disabled");
 		try{
-		config.save(file);
+		//config.save(file);
 		clang.save(lang);
 		user.save(users);
 		} catch (IOException e){
@@ -69,11 +69,6 @@ public class Main extends JavaPlugin {
 		}
 	}
 
-	
-	
-	public String Color(char altColorChar, String textToTranslate) {
-		return null;
-	}
 	 
 		private void registrarCommandos() {
 			getCommand("cnick").setExecutor(new Comandos(this));
