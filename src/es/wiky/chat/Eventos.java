@@ -26,9 +26,8 @@ public class Eventos implements Listener {
 
 		if (!Main.user.contains("User." + p.getName())) {
 			List<String> h = new ArrayList<String>();
-
 			h.add(p.getName());
-
+			
 			Main.user.set("Users", h);
 			Main.user.set("Users." + p.getName() + ".cnick", "none");
 			try {
@@ -38,6 +37,9 @@ public class Eventos implements Listener {
                 e.printStackTrace();
             	}
             }
+		
+			p.sendMessage(Mensajes.nick_not_changed);
+		
 		}
 
 	@EventHandler(priority = EventPriority.LOWEST)

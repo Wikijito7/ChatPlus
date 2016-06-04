@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class Comandos implements CommandExecutor {
 	private Main plugin;
 	public Comandos(Main main) {
@@ -27,7 +29,16 @@ public class Comandos implements CommandExecutor {
 					p.sendMessage(Mensajes.nick_change_usage);
 						}
 				if(args[0].equalsIgnoreCase("help")){
-					p.sendMessage("WIP");
+					p.sendMessage(ChatColor.GRAY + "<-------------------------------->");
+					p.sendMessage(ChatColor.GREEN + "Welcome to the help section.");
+					p.sendMessage(ChatColor.GOLD + "/nick change <nick> " + Mensajes.help_change);
+					p.sendMessage(ChatColor.GOLD + "/nick set <name> <nick> " +Mensajes.help_set);
+					p.sendMessage(ChatColor.GOLD + "/nick remove <name> " +Mensajes.help_remove);
+					p.sendMessage(ChatColor.GOLD + "/nick motd <message> " + ChatColor.DARK_RED + "Actually in WIP " +Mensajes.help_motd);
+					if(p.hasPermission("chatplus.admin")){
+						p.sendMessage(ChatColor.GOLD + "/nick change <nick> " +Mensajes.help_admin);
+					}
+					p.sendMessage(ChatColor.GRAY + "<-------------------------------->");
 						}
 				if(args[0].equalsIgnoreCase("set")){
 					p.sendMessage(Mensajes.nick_set_usage);
@@ -56,6 +67,7 @@ public class Comandos implements CommandExecutor {
 					
 					if(args[0].equalsIgnoreCase("remove")){
 						Player pl = Bukkit.getPlayerExact(args[1]);
+						if(pl != null){
 						Main.user.set("Users." + pl.getName() + ".cnick", "none");
 						try {
 			                Main.user.save(Main.file);
@@ -65,9 +77,11 @@ public class Comandos implements CommandExecutor {
 			            	}
 						pl.sendMessage("Done");
 						p.sendMessage("Eliminated");
+								}else{
+									p.sendMessage(Mensajes.player_dont_exist);
 								}
-					}
-			
+						}
+				}
 			
 			if(args.length == 3){
 				if(args[0].equalsIgnoreCase("set")){
