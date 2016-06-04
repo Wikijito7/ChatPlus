@@ -65,6 +65,7 @@ public class Comandos implements CommandExecutor {
 							}else{
 								p.sendMessage(Mensajes.nick_changed);
 							 	}
+							p.setDisplayName(Main.user.getString("users." + p.getName() + ".cnick"));
 						}
 						
 					if(args[0].equalsIgnoreCase("set")){
