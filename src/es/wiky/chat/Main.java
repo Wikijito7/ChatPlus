@@ -8,6 +8,7 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -17,26 +18,22 @@ import es.wiky.chat.Comandos;
 import es.wiky.chat.Eventos;
 
 public class Main extends JavaPlugin {
-	public static File file = new File("plugins/Chat+", "config.yml");
-	public static File lang = new File("plugins/Chat+/lang", "lang.yml");
+	public static File file = new File("plugins/ChatPlus", "config.yml");
+	public static File lang = new File("plugins/ChatPlus/lang", "lang.yml");
+	public static File users = new File("plugins/ChatPlus/users" , "users.yml");
     public static YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
     public static YamlConfiguration clang = YamlConfiguration.loadConfiguration(lang);
+    public static YamlConfiguration user = YamlConfiguration.loadConfiguration(users);
 	private PluginManager Plugin = this.getServer().getPluginManager();
+	
 	public void onEnable(){
 		System.out.println("Chat+ has been enabled");
 		registrarCommandos();
 		registrarEventos();
-		  if (!file.exists()) {
-	            file.mkdir();
-	            //config.setDefaults(getConfig());
-	            getConfig().options().copyDefaults(true);
-	            try {
-	                config.save(file);
-	                config.load(file);
-	            } catch (IOException | InvalidConfigurationException e) {
-	                e.printStackTrace();
-	            	}
-	            }
+		  FileConfiguration nconfig = getConfig();
+	        nconfig.options().copyDefaults(true);
+	        saveDefaultConfig();
+
 		  if (!lang.exists()) {
 	            lang.mkdir();
 	            Messages();
@@ -47,15 +44,26 @@ public class Main extends JavaPlugin {
 	                e.printStackTrace();
 	            	}
 	            }
+		  
+		  if (!users.exists()) {
+	            users.mkdir();
+	            user.createSection("Users");
+	            try {
+	                user.save(users);
+	                user.load(users);
+	            } catch (IOException | InvalidConfigurationException e) {
+	                e.printStackTrace();
+	            	}
+	            }
 			}	
 	
-	
-	
+
 	public void onDisable(){
 		System.out.println("Chat+ has been disabled");
 		try{
 		config.save(file);
 		clang.save(lang);
+		user.save(users);
 		} catch (IOException e){
 			e.printStackTrace();
 		}

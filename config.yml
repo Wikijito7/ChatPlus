@@ -4,6 +4,8 @@
 
 format: <%DISPLAYNAME%>
 
-#Here are the users, in this case when a user enters it creates a profile in this group. It brings the custom nick (cnick) and the real one.
-Users:
+#Right now the permission is not working, in 0.2 version it will work.
+
+permission:
+   use: true
 

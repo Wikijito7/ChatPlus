@@ -10,7 +10,6 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 public class Comandos implements CommandExecutor {
-	@SuppressWarnings("unused")
 	private Main plugin;
 	public Comandos(Main main) {
 	}
@@ -45,13 +44,7 @@ public class Comandos implements CommandExecutor {
 							if(Main.config.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 							Main.config.set("Users." + p.getName() + ".cnick", args[1]);
 							p.sendMessage(Mensajes.successful_change_nick + " " + Mensajes.playerNewNick(p.getName()));
-							//p.setDisplayName(Main.config.getString("Users." + p.getName() + ".cnick"));
-							 try {
-				                Main.config.save(Main.file);
-				                Main.config.load(Main.file);
-							 } catch (IOException | InvalidConfigurationException e) {
-								 e.printStackTrace();
-					            		}	
+							this.plugin.saveDefaultConfig();	
 							}else{
 								p.sendMessage(Mensajes.nick_changed);
 							 	}
