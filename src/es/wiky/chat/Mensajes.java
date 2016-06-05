@@ -32,7 +32,7 @@ public class Mensajes {
 	public static String help_remove = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.help_remove"));
 	public static String help_admin = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.help_admin"));
 	public static String help_motd = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.help_motd"));
-	public static String nick_removed = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_removed"));
+	public static String nick_remove = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_remove"));
 	public static String playerRemovedNick(String name){
 		return org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_removed").replaceAll("%PLAYER%", name));
 		}

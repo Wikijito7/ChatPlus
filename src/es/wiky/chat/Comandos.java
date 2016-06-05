@@ -73,7 +73,7 @@ public class Comandos implements CommandExecutor {
 							}else{
 								p.sendMessage(Mensajes.nick_changed);
 							 	}
-							p.setDisplayName(Main.user.getString("users." + p.getName() + ".cnick"));
+							p.setDisplayName(Main.user.getString("Users." + p.getName() + ".cnick"));
 						}
 						
 					if(args[0].equalsIgnoreCase("set")){
@@ -91,7 +91,7 @@ public class Comandos implements CommandExecutor {
 			                e.printStackTrace();
 			            	}
 						pl.sendMessage(Mensajes.playerRemovedNick(pl.getName()));
-						p.sendMessage(Mensajes.nick_removed);
+						p.sendMessage(Mensajes.nick_remove);
 								}else{
 									p.sendMessage(Mensajes.player_dont_exist);
 								}
@@ -119,6 +119,7 @@ public class Comandos implements CommandExecutor {
 			            	}
 						p.sendMessage(Mensajes.playerSet(p.getName()));
 						pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
+						pl.setDisplayName(Main.user.getString("Users." + pl.getName() + ".cnick"));	
 							}
 					}else{
 						p.sendMessage(Mensajes.player_dont_exist + " " + args[1]);

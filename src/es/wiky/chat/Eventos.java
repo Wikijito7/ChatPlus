@@ -46,14 +46,10 @@ public class Eventos implements Listener {
 	public void onChat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
 
-				//String form1 = Mensajes.playerDisplayName(p.getName()) + org.bukkit.org.bukkit.ChatColor.RESET + " " + event.getMessage();
-		 		//String form2 = org.bukkit.ChatColor.translateAlternateColorCodes('&', Mensajes.playerDisplayName(Main.user.getString("Users." + p.getName() + ".cnick")) + org.bukkit.org.bukkit.ChatColor.RESET + " " + event.getMessage());
-				  
 		 	if (Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
-		 			//event.setFormat(form1);
 		 			 event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " "  + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
 		 		} else {
-		 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + ".cnick")) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
+		 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
 		 		}
 		  	
 
