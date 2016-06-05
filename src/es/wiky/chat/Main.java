@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import es.wiky.chat.Comandos;
+import es.wiky.chat.Cnick;
 import es.wiky.chat.Eventos;
 
 public class Main extends JavaPlugin {
@@ -88,7 +88,7 @@ public class Main extends JavaPlugin {
 
 	 
 		private void registrarCommandos() {
-			getCommand("cnick").setExecutor(new Comandos(this));
+			getCommand("cnick").setExecutor(new Cnick(this));
 			
 		}
 		
