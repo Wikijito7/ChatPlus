@@ -3,11 +3,14 @@ package es.wiky.chat;
 import java.io.IOException;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
+
+import com.google.common.base.Equivalence;
 
 public class Comandos implements CommandExecutor {
 	private Main plugin;
@@ -47,8 +50,13 @@ public class Comandos implements CommandExecutor {
 			  		}else{
 			  			p.sendMessage(Mensajes.nick);
 			  		}
-				}
-			
+			  	if(args[0].equalsIgnoreCase("admin")){
+			  		p.sendMessage(org.bukkit.ChatColor.DARK_RED + "This command is under development, please wait for the version 0.2");
+			  			}
+			  	if(args[0].equalsIgnoreCase("motd")){
+			  		p.sendMessage(org.bukkit.ChatColor.DARK_RED + "This command is under development, please wait for the version 0.2");
+			  	}
+			}
 			
 			if(args.length == 2){
 						if(args[0].equalsIgnoreCase("change")){
@@ -88,6 +96,9 @@ public class Comandos implements CommandExecutor {
 									p.sendMessage(Mensajes.player_dont_exist);
 								}
 						}
+					if(args[0].equalsIgnoreCase("motd")){
+						p.sendMessage(org.bukkit.ChatColor.DARK_RED + "This command is under development, please wait for the version 0.2");
+					}
 				}
 			
 			if(args.length == 3){
