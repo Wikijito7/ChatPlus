@@ -10,7 +10,7 @@ public class Mensajes {
 	this.plugin = Main;
 		}
 	public static String noperm = org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.noperm"));
-	public static String nick = org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick"));
+	public static String help = org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.help"));
 	public static String nick_change_usage = org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_change_usage"));
 	public static String successful_change_nick = org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.successful_change_nick"));
 	public static String nick_changed = org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_changed"));
@@ -33,8 +33,10 @@ public class Mensajes {
 	public static String help_admin = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.help_admin"));
 	public static String help_motd = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.help_motd"));
 	public static String nick_remove = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.nick_remove"));
+	public static String chatplus_help = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.chatplus_help"));
+	public static String chatplus_info = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.chatplus_info"));
+	public static String chatplus_admin = org.bukkit.ChatColor.translateAlternateColorCodes('&', Main.clang.getString("lang.chatplus_admin"));
 	public static String playerRemovedNick(String name){
 		return org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_removed").replaceAll("%PLAYER%", name));
 		}
-	
 }

@@ -57,13 +57,20 @@ public class Eventos implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onChat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
-
+		
+		if(p.hasPermission("chatplus.color")){
 		 	if (Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
 		 			 event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " "  + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
 		 		} else {
 		 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
 		 		}
-		  	
+			}else{
+				if (Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")) {
+				 event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " "  + event.getMessage());
+	 		}else{
+	 			event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + event.getMessage());
+	 		}
+		}
 
 		
 

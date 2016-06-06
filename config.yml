@@ -6,6 +6,6 @@ format: <%DISPLAYNAME%>
 
 #The motd is the message that the players see when they enter to the server, you can change it as you wish. Right now, it supports the '&' color code, and %PLAYER%.
 
-Motd:
- Message: "Welcome to the server, %PLAYER%"
- Activated: true
+motd:
+ message: "Welcome to the server, %PLAYER%"
+ activated: true

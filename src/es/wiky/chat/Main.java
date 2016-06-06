@@ -40,7 +40,7 @@ public class Main extends JavaPlugin {
 	            clang.set("lang.nick_removed", "&aYou have removed the nick of %PLAYER%.");
 	            clang.set("lang.nick_remove", "&aYour nick has been removed.");
 	            clang.set("lang.nick_not_changed", "&7You haven't change your nick yet, to do it type &b/cnick change <nick>.");
-				clang.set("lang.nick","&aTo use this command type &6/cnick help.");
+				clang.set("lang.help","&aTo use this command type &6/chatplus help.");
 				clang.set("lang.nick_change_usage", "&aTo use this command you need to type &6/cnick change <nick>.");
 				clang.set("lang.successful_change_nick", "&aYou have changed your nick successfully.");
 				clang.set("lang.new_nick",  "&aYour new nick is: &6%NICK%.");
@@ -55,6 +55,12 @@ public class Main extends JavaPlugin {
 				clang.set("lang.help_remove", "&aUsing this command you remove the nick of a player.");
 				clang.set("lang.help_set", "&aUsing this command you set to a player a custom nick.");
 				clang.set("lang.remove_usage", "&aTo use this command, you need to type &6/nick remove <name>");
+				clang.set("lang.motd_usage", "&aTo use this command, you need to type &6/motd help");
+				clang.set("lang.see_motd_usage", "&aTo use this command, you need to type &6/motd see");
+				clang.set("lang.see_motd_help", "&aUsing this command, you see the motd that is currently in the server.");
+				clang.set("lang.chatplus_help", "&aUsing this command, you see the help section.");
+				clang.set("lang.chatplus_info", "&aUsing this command, you see the info of the plugin");
+				clang.set("lang.chatplus_admin", "&aUsing this command, you see the admin's help section.");
 				try {
 	                clang.save(lang);
 	                clang.load(lang);
@@ -90,6 +96,7 @@ public class Main extends JavaPlugin {
 		private void registrarCommandos() {
 			getCommand("cnick").setExecutor(new Cnick(this));
 			getCommand("motd").setExecutor(new Motd(this));
+			getCommand("chatplus").setExecutor(new ChatPlus(this));
 		}
 		
 		private void registrarEventos() {

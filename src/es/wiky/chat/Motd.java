@@ -1,11 +1,8 @@
 package es.wiky.chat;
 
-import java.io.IOException;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 public class Motd implements CommandExecutor{
@@ -23,38 +20,25 @@ public class Motd implements CommandExecutor{
 		Player p = (Player) sender;
 		if(cmd.getName().equalsIgnoreCase("motd")){
 			if(args.length == 0){
-				p.sendMessage("WIP" + " Soy el comando MOTD");
+				p.sendMessage(Mensajes.help);
 			}
 			
 		if(args.length == 1){
-			if(args[0].equalsIgnoreCase("help")){
-				p.sendMessage("Hola, soy un mensaje de ayuda, quiéreme.");
-			}
-			
 			if(args[0].equalsIgnoreCase("see")){
-				p.sendMessage("a");
+				if(p.hasPermission("chatplus.motd")){
+				p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("motd.message")));
+				}else{
+					p.sendMessage(Mensajes.noperm);
+				}
+			}else{
+				p.sendMessage(Mensajes.help);
 			}
 			
 		}
 			
-		if(args.length == 2){
-			if(args[0].equalsIgnoreCase("change")){
-				Main.clang.set("motd.message", args);
-				try {
-	                Main.clang.save(Main.lang);
-	                Main.clang.load(Main.lang);
-	            } catch (IOException | InvalidConfigurationException e) {
-	                e.printStackTrace();
-	            	}
-			}
-		}
-			
-			
-			
-			
-			
-			
-			
+		if(args.length >= 2){
+			p.sendMessage(Mensajes.help);
+				}	
 		}
 		return false;
 	}
