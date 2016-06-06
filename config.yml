@@ -4,8 +4,8 @@
 
 format: <%DISPLAYNAME%>
 
-#Right now the permission is not working, in 0.2 version it will work.
+#The motd is the message that the players see when they enter to the server, you can change it as you wish. Right now, it supports the '&' color code, and %PLAYER%.
 
-permission:
-   use: true
-
+Motd:
+ Message: "Welcome to the server, %PLAYER%"
+ Activated: true

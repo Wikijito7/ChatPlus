@@ -36,4 +36,5 @@ public class Mensajes {
 	public static String playerRemovedNick(String name){
 		return org.bukkit.ChatColor.translateAlternateColorCodes('&',Main.clang.getString("lang.nick_removed").replaceAll("%PLAYER%", name));
 		}
+	
 }

@@ -65,8 +65,8 @@ public class Cnick implements CommandExecutor {
 							
 							p.sendMessage(Mensajes.successful_change_nick + " " + Mensajes.playerNewNick(p.getName()));
 							try {
-				                Main.user.save(Main.file);
-				                Main.user.load(Main.file);
+				                Main.user.save(Main.users);
+				                Main.user.load(Main.users);
 				            } catch (IOException | InvalidConfigurationException e) {
 				                e.printStackTrace();
 				            	}
@@ -85,8 +85,8 @@ public class Cnick implements CommandExecutor {
 						if(pl != null){
 						Main.user.set("Users." + pl.getName() + ".cnick", "none");
 						try {
-			                Main.user.save(Main.file);
-			                Main.user.load(Main.file);
+			                Main.user.save(Main.users);
+			                Main.user.load(Main.users);
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}
@@ -112,8 +112,8 @@ public class Cnick implements CommandExecutor {
 						}else{
 						Main.user.set("Users." + pl.getName() + ".cnick", args[2]);
 						try {
-			                Main.user.save(Main.file);
-			                Main.user.load(Main.file);
+			                Main.user.save(Main.users);
+			                Main.user.load(Main.users);
 			            } catch (IOException | InvalidConfigurationException e) {
 			                e.printStackTrace();
 			            	}
@@ -122,7 +122,7 @@ public class Cnick implements CommandExecutor {
 						pl.setDisplayName(Main.user.getString("Users." + pl.getName() + ".cnick"));	
 							}
 					}else{
-						p.sendMessage(Mensajes.player_dont_exist + " " + args[1]);
+						p.sendMessage(Mensajes.player_dont_exist);
 					 	}
 					}
 				}

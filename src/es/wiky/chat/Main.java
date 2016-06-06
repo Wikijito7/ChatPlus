@@ -35,6 +35,7 @@ public class Main extends JavaPlugin {
 
 		  if (!lang.exists()) {
 	            lang.mkdir();
+	            //Messages of lang file 
 	            clang.set("lang.noperm", "&4Sorry, but you don't have permission to do that.");
 	            clang.set("lang.nick_removed", "&aYou have removed the nick of %PLAYER%.");
 	            clang.set("lang.nick_remove", "&aYour nick has been removed.");
@@ -54,7 +55,7 @@ public class Main extends JavaPlugin {
 				clang.set("lang.help_remove", "&aUsing this command you remove the nick of a player.");
 				clang.set("lang.help_set", "&aUsing this command you set to a player a custom nick.");
 				clang.set("lang.remove_usage", "&aTo use this command, you need to type &6/nick remove <name>");
-	            try {
+				try {
 	                clang.save(lang);
 	                clang.load(lang);
 	            } catch (IOException | InvalidConfigurationException e) {
@@ -78,23 +79,27 @@ public class Main extends JavaPlugin {
 	public void onDisable(){
 		System.out.println("Chat+ has been disabled");
 		try{
-		//config.save(file);
 		clang.save(lang);
 		user.save(users);
 		} catch (IOException e){
 			e.printStackTrace();
+			}
 		}
-	}
 
 	 
 		private void registrarCommandos() {
 			getCommand("cnick").setExecutor(new Cnick(this));
-			
+			getCommand("motd").setExecutor(new Motd(this));
 		}
 		
 		private void registrarEventos() {
 			Plugin.registerEvents(new Eventos(this), this);
 		}
-		
+		private void motd(){
+			clang.createSection("motd");
+			clang.createSection("motd.message");
+			clang.createSection("motd.activated");
+			clang.set("motd.message", "&3Welcome to the server &6%PLAYER%");
+		}
 		
 }

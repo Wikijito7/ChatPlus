@@ -12,6 +12,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class Eventos implements Listener {
 	private Main plugin;
@@ -24,7 +25,7 @@ public class Eventos implements Listener {
 	public void onJoin(PlayerJoinEvent event){
 		Player p = event.getPlayer();
 
-		if (!Main.user.contains("User." + p.getName())) {
+		if (!Main.user.contains("Users." + p.getName())) {
 			List<String> h = new ArrayList<String>();
 			h.add(p.getName());
 			
@@ -39,9 +40,20 @@ public class Eventos implements Listener {
             }
 		
 			p.sendMessage(Mensajes.nick_not_changed);
-			
+			p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("motd.message").replaceAll("%PLAYER%", p.getDisplayName())));
 		}
-
+		
+		@EventHandler(priority = EventPriority.LOWEST)
+		public void onLeave(PlayerQuitEvent event){
+			Player p = event.getPlayer();
+			Main.user.set("Users." + p.getName() + ".cnick", p.getDisplayName());
+			try {
+				Main.user.save(Main.users);
+                Main.user.load(Main.users);
+            } catch (IOException | InvalidConfigurationException e) {
+                e.printStackTrace();
+            	}
+		}
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onChat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
