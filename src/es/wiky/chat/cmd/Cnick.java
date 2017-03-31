@@ -1,7 +1,9 @@
-package es.wiky.chat;
+package es.wiky.chat.cmd;
 
 import java.io.IOException;
 
+import es.wiky.chat.Main;
+import es.wiky.chat.utils.Mensajes;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -102,7 +104,7 @@ public class Cnick implements CommandExecutor {
 						if(pl != null){
 							if(args[2].equalsIgnoreCase("none")){
 								pl.setDisplayName(pl.getName());
-								p.sendMessage(Mensajes.playerSet(p.getName()));
+								p.sendMessage(Mensajes.playerSet(pl.getName()));
 								pl.sendMessage(Mensajes.playerSetReciever(pl.getName()));
 							}else{
 								Main.user.set("Users." + pl.getName() + ".cnick", args[2]);

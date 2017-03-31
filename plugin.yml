@@ -12,3 +12,6 @@ commands:
   chatplus:
    description: The main command of the plugin. 
    aliases: cp
+  party:
+   description: A command to do a party
+   aliases: p

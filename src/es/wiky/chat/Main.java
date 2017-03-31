@@ -3,6 +3,11 @@ package es.wiky.chat;
 import java.io.File;
 import java.io.IOException;
 
+import es.wiky.chat.cmd.ChatPlus;
+import es.wiky.chat.cmd.Cnick;
+import es.wiky.chat.cmd.Motd;
+import es.wiky.chat.cmd.Party;
+import es.wiky.chat.events.Eventos;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -90,6 +95,7 @@ public class Main extends JavaPlugin {
 		getCommand("cnick").setExecutor(new Cnick());
 		getCommand("motd").setExecutor(new Motd(this));
 		getCommand("chatplus").setExecutor(new ChatPlus(this));
+		getCommand("party").setExecutor(new Party(this));
 	}
 
 	private void registrarEventos(){

@@ -1,5 +1,7 @@
-package es.wiky.chat;
+package es.wiky.chat.cmd;
 
+import es.wiky.chat.Main;
+import es.wiky.chat.utils.Mensajes;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
