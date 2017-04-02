@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.wiky.chat.Main;
+import es.wiky.chat.files.Files;
 import es.wiky.chat.utils.Mensajes;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -22,37 +23,41 @@ public class Eventos implements Listener {
 	public Eventos(Main instance){
 		this.plugin = instance;
 	}
+	private Files files = Main.getInstance().getFiles();
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onJoin(PlayerJoinEvent event){
 		Player p = event.getPlayer();
 
-		if(!Main.user.contains("Users." + p.getName())){
+		if(!files.user.contains("Users." + p.getName())){
 			List<String> h = new ArrayList<String>();
 			h.add(p.getName());
 
-			Main.user.set("Users", h);
-			Main.user.set("Users." + p.getName() + ".cnick", "none");
-			Main.user.set("Users." + p.getName() + ".party", "none");
+			files.user.set("Users", h);
+			files.user.set("Users." + p.getName() + ".cnick", "none");
+			files.user.set("Users." + p.getName() + ".party", "none");
 			try{
-				Main.user.save(Main.users);
-				Main.user.load(Main.users);
+				files.user.save(files.users);
+				files.user.load(files.users);
 			}catch(IOException | InvalidConfigurationException e){
 				e.printStackTrace();
 			}
 		}
 
-		p.sendMessage(Mensajes.nick_not_changed);
-		p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("motd.message").replaceAll("%PLAYER%", p.getDisplayName())));
+		if(files.user.get("Users." + p.getName() + ".cnick").equals("none")){
+			p.sendMessage(Mensajes.nick_not_changed);
+		}
+
+		p.sendMessage(ChatColor.translateAlternateColorCodes('&', files.config.getString("motd.message").replaceAll("%PLAYER%", p.getDisplayName())));
 	}
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onLeave(PlayerQuitEvent event){
 		Player p = event.getPlayer();
-		Main.user.set("Users." + p.getName() + ".cnick", p.getDisplayName());
+		files.user.set("Users." + p.getName() + ".cnick", p.getDisplayName());
 		try{
-			Main.user.save(Main.users);
-			Main.user.load(Main.users);
+			files.user.save(files.users);
+			files.user.load(files.users);
 		}catch(IOException | InvalidConfigurationException e){
 			e.printStackTrace();
 		}
@@ -63,16 +68,22 @@ public class Eventos implements Listener {
 		Player p = event.getPlayer();
 
 		if(p.hasPermission("chatplus.color")){
-			if(Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")){
-				event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
-			}else{
-				event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
+			switch(files.user.getString("Users." + p.getName() + ".cnick")){
+				case "none":
+					event.setFormat(files.config.getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
+					break;
+				default:
+					event.setFormat(files.config.getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + org.bukkit.ChatColor.translateAlternateColorCodes('&', event.getMessage()));
+					break;
 			}
 		}else{
-			if(Main.user.getString("Users." + p.getName() + ".cnick").equalsIgnoreCase("none")){
-				event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " " + event.getMessage());
-			}else{
-				event.setFormat(this.plugin.getConfig().getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + event.getMessage());
+			switch(files.user.getString("Users." + p.getName() + ".cnick")){
+				case "none":
+					event.setFormat(files.config.getString("format").replaceAll("%DISPLAYNAME%", p.getName()) + " " + event.getMessage());
+					break;
+				default:
+					event.setFormat(files.config.getString("format").replaceAll("%DISPLAYNAME%", org.bukkit.ChatColor.translateAlternateColorCodes('&', p.getDisplayName() + org.bukkit.ChatColor.RESET)) + " " + event.getMessage());
+					break;
 			}
 		}
 
